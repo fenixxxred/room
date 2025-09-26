@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loja Erótica - Exemplo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{--bg:#fff;--card:#f5c5c500;--muted:#6b7280;--accent:#b30000;--dark:#0f172a;--glass: rgba(255,255,255,0.6)}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial; margin:0; background:linear-gradient(180deg,#f8dddd,#ffbfbf,#ffb0b0); color:var(--dark);}
+    header
+    {display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px 20px;
+      position:sticky;
+      top:0;
+      background:linear-gradient(180deg,rgba(173, 76, 76, 0.95),rgba(218, 0, 0, 0.75),rgba(255, 0, 0, 0.75));
+      backdrop-filter: blur(4px);
+      z-index:10
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{
+      width:60px;   /* pode aumentar pra dar mais destaque */
+      height:60px;
+      border-radius:8px;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#000; /* mantém fundo preto da tua logo */
+    }
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit:contain; /* preserva proporção */
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
+
+    .brand h1{font-size:16px;margin:0}
+    .search{flex:1;max-width:540px;margin:0 20px}
+    .search input{width:100%;padding:10px 12px;border-radius:10px;border:1px solid #e6e6e6}
+    .actions{display:flex;gap:12px;align-items:center}
+    .btn{
+      background: #cc0000;
+      color:rgb(255, 255, 255);
+      padding:9px 12px;
+      border-radius:10px;
+      border:0;
+      cursor:pointer;
+    } 
+    #ageYes{
+      background: #5ee23c;
+    }
+    #cartToggle{
+      background: transparent;
+      color:rgb(255, 255, 255);
+      padding:9px 12px;
+      border-radius:10px;
+      border:0;
+      cursor:pointer;
+    }
+    #favBtn{
+      background:#ffffff;
+      color: #000;
+    }
+    .btn.ghost{
+      background:#cc0000;
+      color:var(--bg);
+      border:1px solid rgba(0,0,0,0.06)
+    }
+    main{display:flex;gap:20px;padding:22px;max-width:1100px;margin:18px auto}
+    .sidebar{width:220px;transition:.3s}
+    .card{background:var(--card);border-radius:12px;padding:12px;}
+    .filters h3{margin:6px 0 10px;font-size:14px}
+    .categories button{display:block;width:100%;text-align:left;padding:8px;border-radius:8px;border:0;background:transparent;color:var(--dark);cursor:pointer}
+    .catalog{flex:1}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+    .product{border-radius:12px;padding:12px;border:1px solid #eee;background:linear-gradient(180deg,white,var(--glass));display:flex;flex-direction:column;gap:8px}
+    .p-img {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+    .p-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;    /* preserva proporção sem cortar */
+  border-radius: 10px;
+  background: #fff;       /* fundo branco para imagens transparentes */
+  padding: 5px;           /* dá respiro nas bordas */
+}
+    .p-title{font-weight:600}
+    .p-desc{font-size:13px;color:var(--muted)}
+    .p-row{display:flex;justify-content:space-between;align-items:center}
+    /* cart drawer */
+    .card img {
+      width: 100%;
+      height: 200px;       /* altura fixa para padronizar os cards */
+      object-fit: contain; /* mantém a proporção sem cortar */
+      border-radius: 8px;  /* opcional, deixa cantos arredondados */
+      background: #fff;    /* fundo branco para imagens menores */
+      padding: 5px;        /* dá um respiro ao redor da imagem */
+    }
+
+    .cart-btn{position:relative}
+    .badge{position:absolute;right:-8px;top:-8px;background:#ff4757;color:white;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:12px}
+    .drawer{position:fixed;right:18px;top:70px;width:360px;max-width:92%;background:white;border-radius:12px;padding:12px;box-shadow:0 10px 30px rgba(12,12,22,0.12);display:none;z-index:20}
+    .drawer.open{display:block}
+    .cart-item{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #f3f3f3}
+    .cart-item:last-child{border-bottom:0}
+    .cart-actions{display:flex;gap:8px;align-items:center}
+    /* footer */
+    footer{
+      background: linear-gradient(180deg,rgba(255, 0, 0, 0.95),rgba(202, 2, 2, 0.75),rgba(133, 61, 61, 0.75));
+      padding:18px;
+      text-align:center;
+      color:var(--bg);
+      font-size:13px;
+    }
+    /* modal */
+    .modal{position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,0.45);display:none;align-items:center;justify-content:center;z-index:30}
+    .modal.open{display:flex}
+    .modal-card{background:white;border-radius:12px;padding:18px;max-width:760px;width:94%;max-height:90vh;overflow:auto}
+    /* age gate */
+    .age{position:fixed;left:0;top:0;right:0;bottom:0;background:linear-gradient(180deg,rgba(15,23,42,0.9),rgba(15,23,42,0.95));color:white;display:flex;align-items:center;justify-content:center;z-index:50}
+    .age-box{background:rgba(255,255,255,0.03);padding:22px;border-radius:12px;text-align:center;max-width:420px}
+    .age-box h2{margin:0 0 10px}
+    /* hambúrguer */
+    .menu-toggle{display:none;background:transparent;border:0;font-size:26px;cursor:pointer;color:var(--accent)}
+    /* responsivo */
+   @media (max-width:880px){
+  main{padding:14px;flex-direction:column}
+  .sidebar{
+    position:fixed;
+    top:65px;
+    left:0;
+    height:100%;
+    background:white;
+    z-index:25;
+    padding:20px;
+    width:240px;
+    box-shadow:2px 0 10px rgba(0,0,0,0.1);
+    transform:translateX(-100%);
+    transition:.3s;
+  }
+  .sidebar.open{transform:translateX(0);}
+  .menu-toggle{display:block;}
+  .search{display:none;}
+  .brand h1{display:none;}
+}
+
+@media (max-width:600px){
+  header{padding:12px;}
+  .logo{width:44px;height:44px;}
+  .btn{padding:6px 8px;font-size:13px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+  .p-img{height:150px}
+}
+
+@media (max-width:480px){
+  main{padding:10px}
+  .grid{grid-template-columns:1fr 1fr;gap:10px}
+  .product{padding:10px}
+  .p-img{height:130px}
+  .actions{gap:6px}
+  footer{font-size:12px;padding:14px}
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <button id="menuToggle" class="menu-toggle" aria-label="Abrir menu">☰</button>
+      <div class="logo">
+        <img src="img/logo.jpg" alt="RedRoom Logo" />
+      </div>
+      <h1>RedRoom</h1>
+    </div>
+
+    <div class="search"><input id="search" placeholder="Buscar produtos (ex: vibrador, lubrificante)" /></div>
+
+    <div class="actions">
+      <button id="favBtn" class="btn ghost">Favoritos</button>
+      <div class="cart-btn">
+        <button id="cartToggle" class="btn" aria-label="Abrir carrinho"><i class="fas fa-shopping-cart"></i></button>
+        <div id="cartCount" class="badge" style="display:none">0</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <aside id="sidebar" class="sidebar">
+      <div class="card filters">
+        <h3>Filtros</h3>
+        <div class="categories">
+          <button data-cat="all">Todos</button>
+          <button data-cat="vibradores">Vibradores</button>
+          <button data-cat="lubrificantes">Lubrificantes</button>
+          <button data-cat="lingerie">Lingerie</button>
+          <button data-cat="acessorios">Acessórios</button>
+        </div>
+        <hr />
+        <h3>Ordenar</h3>
+        <select id="sort" style="width:100%;padding:8px;border-radius:8px;border:1px solid #eee">
+          <option value="default">Padrão</option>
+          <option value="price-asc">Preço: menor</option>
+          <option value="price-desc">Preço: maior</option>
+        </select>
+      </div>
+    </aside>
+
+    <section class="catalog">
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <h2 style="margin:0">Produtos</h2>
+          <small style="color:var(--muted)">Entrega discreta • Pagamento seguro</small>
+        </div>
+        <div id="grid" class="grid"></div>
+      </div>
+    </section>
+  </main>
+  <div id="drawer" class="drawer" aria-hidden="true">
+    <h3>Carrinho</h3>
+    <div id="cartList" style="max-height:320px;overflow:auto;margin-top:8px"></div>
+    <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center">
+      <strong>Total: R$ <span id="cartTotal">0.00</span></strong>
+      <div>
+        <button id="clearCart" class="btn ghost">Limpar</button>
+        <button id="checkoutBtn" class="btn">Finalizar</button>
+      </div>
+    </div>
+  </div>
+  <!-- Modal product / checkout -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-card" id="modalCard"></div>
+  </div>
+  <footer>
+    <small>Exemplo didático — a loja deve seguir legislação local e LGPD antes de operar comercialmente.</small>
+  </footer>
+  <!-- Age gate (displayed on first visit) -->
+  <div id="ageGate" class="age" style="display:none">
+    <div class="age-box">
+      <h2>Você tem 18 anos ou mais?</h2>
+      <p>Esta loja contém produtos para adultos. Confirme sua idade para continuar.</p>
+      <div style="display:flex;gap:8px;justify-content:center;margin-top:12px">
+        <button id="ageYes" class="btn">Sim, tenho 18+</button>
+        <button id="ageNo" class="btn ghost">Não</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Dados de exemplo (sem imagens explícitas)
+    const products = [
+  {id:1,title:'Vibrador Clássico',cat:'vibradores',price:129.90,desc:'Design discreto, 3 modos de vibração.',img:'img/vibrador-classico.jpg'},
+  {id:2,title:'Vibrador Ponto G',cat:'vibradores',price:199.00,desc:'Formato ergonômico para estimulação precisa.',img:'img/vibrador-ponto-g.jpg'},
+  {id:3,title:'Lubrificante à base de água 100ml',cat:'lubrificantes',price:29.90,desc:'Suave, compatível com preservativos.',img:'img/lubrificante-agua.jpg'},
+  {id:4,title:'Lingerie Sensual (P) - Preto',cat:'lingerie',price:89.90,desc:'Conjunto discreto e confortável.',img:'img/lingerie-preta.jpg'},
+  {id:5,title:'Conjunto Preservativos (10un)',cat:'acessorios',price:24.90,desc:'Proteção segura e confortável.',img:'img/preservativos.jpg'},
+  {id:6,title:'Massageador de Couple',cat:'acessorios',price:259.00,desc:'Para usar a dois — recarregável.',img:'img/massageador-couple.jpg'},
+
+  // --- novos produtos ---
+  {id:7,title:'Gel Funcional 15ml',cat:'géis',price:39.90,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Excitante_Unissex_Dragao_C_965.webp'},
+  
+  {id:11,title:'Óleo Clito',cat:'óleos',price:49.90,desc:'Estimulação sensorial para ela.',img:'img/oleo-clito.jpg'},
+  
+  {id:13,title:'Tesão de Vaca',cat:'géis',price:29.90,desc:'Estimulante afrodisíaco.',img:'img/tesao-vaca.jpg'},
+  
+  
+  {id:19,title:'Plug Aço',cat:'plugs',price:69.90,desc:'Plug anal em aço inoxidável.',img:'img/plug-aco.webp'},
+  {id:20,title:'Egg Masturbador',cat:'masturbadores',price:45.90,desc:'Texturas internas para prazer intenso.',img:'img/egg-masturbador.jpg'},
+
+  {id:15,title:'Anel Peniano',cat:'acessorios',price:44.90,desc:'Prolonga e intensifica o prazer.',img:'img/Anel_Peniano_Com_Vibro_Borbole_431.webp'},
+  {id:8,title:'Bolinhas Explosivas',cat:'acessorios',price:34.90,desc:'Sensação única durante a relação.',img:'img/Bolinha_Beijavel_Yummy_Sexy_Fa_797.webp'},
+  {id:17,title:'Bullet',cat:'vibradores',price:59.90,desc:'Mini vibrador discreto e potente.',img:'img/Bullet.webp'},
+  {id:14,title:'Caneta Beijável',cat:'acessorios',price:29.90,desc:'Escreva na pele com sabor e prazer.',img:'img/Caneta_Comestvel_Sweet_Body_25_610.webp'},
+  {id:10,title:'D4 Gel',cat:'géis',price:44.90,desc:'Excitante unissex com efeito intenso.',img:'img/Gel_Excitante_Unissex_Dragao_C_965.webp'},
+  {id:9,title:'Yummy',cat:'géis',price:29.90,desc:'Gel beijável com sabor irresistível.',img:'img/Gel_Termico_Comestvel_Yummy_15_185.png'},
+  {id:12,title:'Yummy Gourmet',cat:'géis',price:34.90,desc:'Gel beijável gourmet para novas experiências.',img:'img/Gel_Termico_Comestvel_Yummy_Go_526.webp'},
+  {id:16,title:'Prótese c/ Vibro Yaffa',cat:'próteses',price:139.90,desc:'Prótese realística com vibração.',img:'img/Protese_Com_Vibro_Interno_195c_800.webp'},
+  {id:18,title:'Vibrador Ponto G Premium',cat:'vibradores',price:59.90,desc:'Design anatômico para máxima estimulação.',img:'img/Vibrador_Ponto_G_Golfinho_Liso_516.webp'}
+
+];
+
+
+    const container = document.querySelector('.grid');
+    products.forEach(prod => {
+      container.innerHTML += `
+        <div class="card">
+          <img src="${prod.img}" alt="${prod.title}">
+          <h3>${prod.title}</h3>
+          <p>${prod.desc}</p>
+          <p class="price">R$ ${prod.price.toFixed(2)}</p>
+          <button class="btn" onclick="addToCart('${prod.title}', ${prod.price})">Adicionar</button>
+        </div>
+      `;
+    });
+
+    // Estado
+    let cart = JSON.parse(localStorage.getItem('cart_v2')||'[]');
+    const grid = document.getElementById('grid');
+    const cartCount = document.getElementById('cartCount');
+    const drawer = document.getElementById('drawer');
+    const cartList = document.getElementById('cartList');
+    const cartTotal = document.getElementById('cartTotal');
+    const modal = document.getElementById('modal');
+    const modalCard = document.getElementById('modalCard');
+
+    // Render
+    function renderProducts(list){
+      grid.innerHTML = '';
+      list.forEach(p=>{
+        const el = document.createElement('div'); el.className='product';
+        el.innerHTML = `
+          <div class="p-img">
+            <img src="${p.img || 'img/placeholder.jpg'}" alt="${p.title}" style="width:100%;height:150px;object-fit:cover;border-radius:8px">
+            <small style="color:var(--muted)">${p.cat}</small>
+        </div>
+          <div class="p-title">${p.title}</div>
+          <div class="p-desc">${p.desc}</div>
+          <div class="p-row">
+            <div><strong>R$ ${p.price.toFixed(2)}</strong></div>
+            <div style="display:flex;gap:8px">
+              <button class="btn ghost" data-id="${p.id}" onclick="openProduct(${p.id})">Ver</button>
+              <button class="btn" data-id="${p.id}" onclick="addToCart(${p.id})">Adicionar</button>
+            </div>
+          </div>`;
+        grid.appendChild(el);
+      })
+    }
+
+    function formatPrice(v){return Number(v).toFixed(2)}
+
+    // Cart helpers
+    function saveCart(){localStorage.setItem('cart_v2', JSON.stringify(cart)); updateCartUI();}
+    function updateCartUI(){
+      const count = cart.reduce((s,i)=>s+i.qty,0);
+      if(count>0){cartCount.style.display='flex';cartCount.textContent=count}else cartCount.style.display='none';
+      // list
+      cartList.innerHTML = '';
+      cart.forEach(item=>{
+        const p = products.find(x=>x.id===item.id);
+        const div = document.createElement('div'); div.className='cart-item';
+        div.innerHTML = `
+          <div style='flex:1'>
+            <div style='font-weight:600'>${p.title}</div>
+            <div style='font-size:13px;color:${'var(--muted)'}'>R$ ${formatPrice(p.price)} x ${item.qty}</div>
+          </div>
+          <div style='display:flex;flex-direction:column;align-items:flex-end'>
+            <div style='font-weight:700'>R$ ${(p.price*item.qty).toFixed(2)}</div>
+            <div class='cart-actions'>
+              <button class='btn ghost' onclick='changeQty(${item.id}, -1)'>-</button>
+              <button class='btn ghost' onclick='changeQty(${item.id}, 1)'>+</button>
+              <button class='btn ghost' onclick='removeItem(${item.id})'>Remover</button>
+            </div>
+          </div>`;
+        cartList.appendChild(div);
+      })
+      const total = cart.reduce((s,i)=>s + (products.find(p=>p.id===i.id).price * i.qty),0);
+      cartTotal.textContent = formatPrice(total);
+    }
+
+    function addToCart(id){
+      const found = cart.find(i=>i.id===id);
+      if(found) found.qty++;
+      else cart.push({id,qty:1});
+      saveCart();
+      showToast('Produto adicionado');
+    }
+    function changeQty(id,delta){
+      const it = cart.find(i=>i.id===id); if(!it) return; it.qty += delta; if(it.qty<=0) cart = cart.filter(i=>i.id!==id); saveCart();
+    }
+    function removeItem(id){cart = cart.filter(i=>i.id!==id); saveCart();}
+    function clearCart(){cart=[];saveCart();showToast('Carrinho limpo');}
+
+    // Product modal
+    window.openProduct = function(id){
+      const p = products.find(x=>x.id===id);
+      modalCard.innerHTML = `
+        <div style='display:flex;gap:18px;align-items:flex-start'>
+          <div style="flex:1">
+            <img src="${p.img || 'img/placeholder.jpg'}" alt="${p.title}" 
+                style="width:100%;max-height:220px;object-fit:cover;border-radius:10px">
+            <small style="color:var(--muted)">${p.cat}</small>
+        </div>
+
+          <div style='flex:1'>
+            <h2 style='margin-top:0'>${p.title}</h2>
+            <p style='color:var(--muted)'>${p.desc}</p>
+            <p style='font-size:18px;font-weight:700'>R$ ${formatPrice(p.price)}</p>
+            <div style='display:flex;gap:8px;margin-top:12px'>
+              <button class='btn' onclick='addToCart(${p.id})'>Adicionar ao carrinho</button>
+              <button class='btn ghost' onclick='closeModal()'>Fechar</button>
+            </div>
+          </div>
+        </div>`;
+      openModal();
+    }
+
+    function openModal(){modal.classList.add('open');modal.setAttribute('aria-hidden','false')}
+    function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true')}
+    modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); })
+
+    // Checkout flow (simulação)
+    document.getElementById('checkoutBtn').addEventListener('click', ()=>{
+      if(cart.length===0){showToast('Carrinho vazio');return}
+      buildCheckout(); openModal();
+    })
+
+    function buildCheckout(){
+      const total = cart.reduce((s,i)=>s + (products.find(p=>p.id===i.id).price * i.qty),0);
+      let itemsHtml = cart.map(i=>{
+        const p = products.find(x=>x.id===i.id);
+        return `<div style='display:flex;justify-content:space-between;margin:6px 0'><div>${p.title} x ${i.qty}</div><div>R$ ${(p.price*i.qty).toFixed(2)}</div></div>`
+      }).join('');
+      modalCard.innerHTML = `
+        <h2>Finalizar Compra</h2>
+        <div style='max-height:250px;overflow:auto;border:1px solid #f3f3f3;padding:10px;border-radius:8px;margin-bottom:10px'>${itemsHtml}</div>
+        <div style='font-weight:700;margin-bottom:8px'>Total: R$ ${formatPrice(total)}</div>
+
+        <form id='checkoutForm'>
+          <div style='display:flex;flex-direction:column;gap:8px'>
+            <input name='name' placeholder='Nome completo' required style='padding:8px;border-radius:8px;border:1px solid #eee' />
+            <input name='email' placeholder='Email' required style='padding:8px;border-radius:8px;border:1px solid #eee' />
+            <input name='address' placeholder='Endereço para entrega' required style='padding:8px;border-radius:8px;border:1px solid #eee' />
+            <small style='color:var(--muted)'>A embalagem é neutra e discreta — sem referências explícitas aos produtos.</small>
+            <div style='display:flex;gap:8px;justify-content:flex-end;margin-top:8px'>
+              <button type='button' class='btn ghost' onclick='closeModal()'>Voltar</button>
+              <button type='submit' class='btn'>Confirmar pedido</button>
+            </div>
+          </div>
+        </form>`;
+
+      document.getElementById('checkoutForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target).entries());
+
+      const order = {
+        id: 'PED' + Date.now(),
+        date: new Date().toLocaleString('pt-BR'),
+        customer: data,
+        items: cart.slice(),
+        total
+      };
+          
+      // Montar mensagem para o WhatsApp
+      let msg = `🛒 *Novo Pedido ${order.id}*\n\n`;
+      msg += `👤 Cliente: ${order.customer.name}\n`;
+      msg += `📍 Endereço: ${order.customer.address}\n`;
+      msg += `📧 Email: ${order.customer.email}\n\n`;
+      msg += `📦 *Itens:*\n`;
+      order.items.forEach(i=>{
+        const p = products.find(x=>x.id===i.id);
+        msg += `- ${p.title} x${i.qty} = R$ ${(p.price * i.qty).toFixed(2)}\n`;
+      });
+      msg += `\n💰 Total: R$ ${order.total.toFixed(2)}\n`;
+      msg += `\n📲 Enviado via Loja RedRoom`;
+
+      // Seu número de WhatsApp no formato internacional (ex: Brasil 55 + DDD + número)
+      const phone = "5564993286584"; // <-- troque para o seu número
+
+      // Link para WhatsApp
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+
+      // Limpa carrinho e redireciona
+      clearCart();
+      window.open(url, "_blank");
+    });
+    }
+
+    // UI events
+    document.getElementById('cartToggle').addEventListener('click', ()=>{
+      drawer.classList.toggle('open');
+    })
+    document.getElementById('clearCart').addEventListener('click', ()=>{ if(confirm('Limpar o carrinho?')) clearCart(); })
+
+    function changeQtyUI(){updateCartUI();}
+    function changeQty(id,delta){
+  const it = cart.find(i=>i.id===id); 
+  if(!it) return; 
+  it.qty += delta; 
+  if(it.qty<=0) cart = cart.filter(i=>i.id!==id); 
+  saveCart(); // já chama updateCartUI()
+}
+
+function removeItem(id){
+  cart = cart.filter(i=>i.id!==id); 
+  saveCart(); // idem
+}
+
+// 🔑 expõe no window (escopo global)
+window.changeQty = changeQty;
+window.removeItem = removeItem;
+
+    // Filters & search
+    document.querySelectorAll('.categories button').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const cat = btn.dataset.cat;
+        if(cat === 'all') renderProducts(products);
+        else renderProducts(products.filter(p=>p.cat === cat));
+      });
+    });
+
+    document.getElementById('search').addEventListener('input', e=>{
+      const term = e.target.value.toLowerCase();
+      renderProducts(products.filter(p=>p.title.toLowerCase().includes(term) || p.desc.toLowerCase().includes(term)));
+    });
+
+    document.getElementById('sort').addEventListener('change', e=>{
+      let sorted = [...products];
+      if(e.target.value === 'price-asc') sorted.sort((a,b)=>a.price-b.price);
+      if(e.target.value === 'price-desc') sorted.sort((a,b)=>b.price-a.price);
+      renderProducts(sorted);
+    });
+
+    function applyFilters(cat=null, q=''){
+      q = q || document.getElementById('search').value || '';
+      const sort = document.getElementById('sort').value;
+      let list = products.slice();
+      if(cat && cat!=='all') list = list.filter(p=>p.cat===cat);
+      if(q) list = list.filter(p=> (p.title+p.desc).toLowerCase().includes(q.toLowerCase()));
+      if(sort==='price-asc') list.sort((a,b)=>a.price-b.price);
+      if(sort==='price-desc') list.sort((a,b)=>b.price-a.price);
+      renderProducts(list);
+    }
+
+    // Simple toast
+function showToast(msg){
+  alert(msg);
+}
+
+
+    // Age gate
+    const ageGate = document.getElementById('ageGate');
+    if(!localStorage.getItem('age_confirmed')){ ageGate.style.display='flex'; }
+    document.getElementById('ageYes').addEventListener('click', ()=>{ localStorage.setItem('age_confirmed','1'); ageGate.style.display='none'; showToast('Bem-vindx!'); });
+    document.getElementById('ageNo').addEventListener('click', ()=>{ alert('Você precisa ter 18 anos ou mais para acessar.'); });
+
+    // Init
+    renderProducts(products);
+    updateCartUI();
+
+    // small UX: close drawer when clicking outside
+    document.addEventListener('click', e=>{ if(!e.target.closest('.drawer') && !e.target.closest('#cartToggle')) drawer.classList.remove('open'); })
+    // toggle sidebar no mobile
+    const sidebar = document.getElementById('sidebar');
+    const menuToggle = document.getElementById('menuToggle');
+    menuToggle.addEventListener('click', ()=> sidebar.classList.toggle('open'));
+
+    document.addEventListener('click', e=>{
+      if(!e.target.closest('#sidebar') && !e.target.closest('#menuToggle')){
+        sidebar.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
