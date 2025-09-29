@@ -17,7 +17,7 @@
       padding:18px 20px;
       position:sticky;
       top:0;
-      background:linear-gradient(180deg,rgba(173, 76, 76, 0.95),rgba(218, 0, 0, 0.75),rgba(255, 0, 0, 0.75));
+      background:linear-gradient(180deg,rgb(173, 76, 76),rgb(218, 0, 0),rgb(255, 0, 0));
       backdrop-filter: blur(4px);
       z-index:10
     }
@@ -80,25 +80,15 @@
     .catalog{flex:1}
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
     .product{border-radius:12px;padding:12px;border:1px solid #eee;background:linear-gradient(180deg,white,var(--glass));display:flex;flex-direction:column;gap:8px}
-    .p-img {
-  width: 100%;
-  height: 180px;
-  overflow: hidden;
-  border-radius: 10px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
+
+
+.p-img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* mantém proporção sem cortar */
+  display: block;
 }
-    .p-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;    /* preserva proporção sem cortar */
-  border-radius: 10px;
-  background: #fff;       /* fundo branco para imagens transparentes */
-  padding: 5px;           /* dá respiro nas bordas */
-}
+
     .p-title{font-weight:600}
     .p-desc{font-size:13px;color:var(--muted)}
     .p-row{display:flex;justify-content:space-between;align-items:center}
@@ -121,7 +111,7 @@
     .cart-actions{display:flex;gap:8px;align-items:center}
     /* footer */
     footer{
-      background: linear-gradient(180deg,rgba(255, 0, 0, 0.95),rgba(202, 2, 2, 0.75),rgba(133, 61, 61, 0.75));
+      background: linear-gradient(180deg,rgb(255, 0, 0),rgb(202, 2, 2),rgb(133, 61, 61));
       padding:18px;
       text-align:center;
       color:var(--bg);
@@ -261,34 +251,31 @@
   <script>
     // Dados de exemplo (sem imagens explícitas)
     const products = [
-  {id:1,title:'Vibrador Clássico',cat:'vibradores',price:129.90,desc:'Design discreto, 3 modos de vibração.',img:'img/vibrador-classico.jpg'},
-  {id:2,title:'Vibrador Ponto G',cat:'vibradores',price:199.00,desc:'Formato ergonômico para estimulação precisa.',img:'img/vibrador-ponto-g.jpg'},
-  {id:3,title:'Lubrificante à base de água 100ml',cat:'lubrificantes',price:29.90,desc:'Suave, compatível com preservativos.',img:'img/lubrificante-agua.jpg'},
-  {id:4,title:'Lingerie Sensual (P) - Preto',cat:'lingerie',price:89.90,desc:'Conjunto discreto e confortável.',img:'img/lingerie-preta.jpg'},
-  {id:5,title:'Conjunto Preservativos (10un)',cat:'acessorios',price:24.90,desc:'Proteção segura e confortável.',img:'img/preservativos.jpg'},
-  {id:6,title:'Massageador de Couple',cat:'acessorios',price:259.00,desc:'Para usar a dois — recarregável.',img:'img/massageador-couple.jpg'},
-
-  // --- novos produtos ---
-  {id:7,title:'Gel Funcional 15ml',cat:'géis',price:39.90,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Excitante_Unissex_Dragao_C_965.webp'},
-  
-  {id:11,title:'Óleo Clito',cat:'óleos',price:49.90,desc:'Estimulação sensorial para ela.',img:'img/oleo-clito.jpg'},
-  
-  {id:13,title:'Tesão de Vaca',cat:'géis',price:29.90,desc:'Estimulante afrodisíaco.',img:'img/tesao-vaca.jpg'},
-  
-  
-  {id:19,title:'Plug Aço',cat:'plugs',price:69.90,desc:'Plug anal em aço inoxidável.',img:'img/plug-aco.webp'},
-  {id:20,title:'Egg Masturbador',cat:'masturbadores',price:45.90,desc:'Texturas internas para prazer intenso.',img:'img/egg-masturbador.jpg'},
-
-  {id:15,title:'Anel Peniano',cat:'acessorios',price:44.90,desc:'Prolonga e intensifica o prazer.',img:'img/Anel_Peniano_Com_Vibro_Borbole_431.webp'},
-  {id:8,title:'Bolinhas Explosivas',cat:'acessorios',price:34.90,desc:'Sensação única durante a relação.',img:'img/Bolinha_Beijavel_Yummy_Sexy_Fa_797.webp'},
-  {id:17,title:'Bullet',cat:'vibradores',price:59.90,desc:'Mini vibrador discreto e potente.',img:'img/Bullet.webp'},
-  {id:14,title:'Caneta Beijável',cat:'acessorios',price:29.90,desc:'Escreva na pele com sabor e prazer.',img:'img/Caneta_Comestvel_Sweet_Body_25_610.webp'},
-  {id:10,title:'D4 Gel',cat:'géis',price:44.90,desc:'Excitante unissex com efeito intenso.',img:'img/Gel_Excitante_Unissex_Dragao_C_965.webp'},
-  {id:9,title:'Yummy',cat:'géis',price:29.90,desc:'Gel beijável com sabor irresistível.',img:'img/Gel_Termico_Comestvel_Yummy_15_185.png'},
-  {id:12,title:'Yummy Gourmet',cat:'géis',price:34.90,desc:'Gel beijável gourmet para novas experiências.',img:'img/Gel_Termico_Comestvel_Yummy_Go_526.webp'},
-  {id:16,title:'Prótese c/ Vibro Yaffa',cat:'próteses',price:139.90,desc:'Prótese realística com vibração.',img:'img/Protese_Com_Vibro_Interno_195c_800.webp'},
-  {id:18,title:'Vibrador Ponto G Premium',cat:'vibradores',price:59.90,desc:'Design anatômico para máxima estimulação.',img:'img/Vibrador_Ponto_G_Golfinho_Liso_516.webp'}
-
+      {id:1,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Excitante_Unissex_Dragao_C_965.webp'},
+      {id:2,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Excitante_Pinta_Clima_15g__75.webp'},
+      {id:3,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Anestesico_Tesao_Na_Raba_1_877.png'},
+      {id:4,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Retardante_Pika_Turbo_15g__146.png'},
+      {id:5,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Vibrador_Liquido_Power_Shock_2_32.png'},
+      {id:6,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Anestesico_InDolor_15g_Sex_506.png'},
+      {id:8,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Funcional_InTranse_15g_Sex_83.png'},
+      {id:9,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Excitante_Feminino_Diaba_H_258.png'},
+      {id:10,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Adstringente_Lacradinha_15_636.png'},
+      {id:12,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Excitante_Feminino_Lanca_Xanas_220.png'},
+      {id:14,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel_Funcional_Super_Intenso_Bo_890.webp'},
+  {id:7,title:'Gel Funcional 15ml',price:30.00,desc:'Sensações intensas para momentos especiais.',img:'img/Gel-Sensibilizante-Volume-Maxi-445.PNG'},
+  {id:11,title:'Óleo Clito',price:30.00,desc:'Estimulação sensorial para ela.',img:'img/Vibrador_Liquido_Eletrizante_C_281.webp'},
+  {id:13,title:'Tesão de Egua',price:15.00,desc:'Estimulante afrodisíaco.',img:'img/Energetico_Afrodisaco_Feminino_641.webp'},
+  {id:19,title:'Plug Aço',price:40.00,desc:'Plug anal em aço inoxidável.',img:'img/Plug_Anal_Em_Metal_Tamanho_PP__43.jpg'},
+  {id:20,title:'Egg Masturbador',price:40.00,desc:'Texturas internas para prazer intenso.',img:'img/egg-masturbador.webp'},
+  {id:15,title:'Anel Peniano',price:30.00,desc:'Prolonga e intensifica o prazer.',img:'img/Anel_Peniano_Com_Vibro_Borbole_737.jpg'},
+  {id:8,title:'Bolinhas Explosivas',price:20.00,desc:'Sensação única durante a relação.',img:'img/Bolinha_Beijavel_Yummy_Sexy_Fa_672.webp'},
+  {id:17,title:'Bullet',price:40.00,desc:'Mini vibrador discreto e potente.',img:'img/Vibrador_Bullet_Ovo_Vibratorio_630.jpg'},
+  {id:14,title:'Caneta Beijável',price:20.00,desc:'Escreva na pele com sabor e prazer.',img:'img/Caneta_Comestvel_Sweet_Body_25_981.jpg'},
+  {id:10,title:'D4 Gel',price:30.00,desc:'Excitante unissex com efeito intenso.',img:'img/Lubrificante-ntimo-D4-Frozen-6-177.png'},
+  {id:9,title:'Yummy',price:20.00,desc:'Gel beijável com sabor irresistível.',img:'img/Gel_Termico_Comestvel_Yummy_15_809.png'},
+  {id:12,title:'Yummy Gourmet',price:30.00,desc:'Gel beijável gourmet para novas experiências.',img:'img/Gel_Termico_Comestvel_Yummy_Go_753.webp'},
+  {id:16,title:'Prótese c/ Vibro Yaffa',price:90.00,desc:'Prótese realística com vibração.',img:'img/Protese_Com_Vibro_Interno_195c_800.webp'},
+  {id:18,title:'Vibrador Ponto G Premium',price:40.00,desc:'Design anatômico para máxima estimulação.',img:'img/Vibrador_Ponto_G_Golfinho_Liso_516.webp'}
 ];
 
 
@@ -322,7 +309,7 @@
         const el = document.createElement('div'); el.className='product';
         el.innerHTML = `
           <div class="p-img">
-            <img src="${p.img || 'img/placeholder.jpg'}" alt="${p.title}" style="width:100%;height:150px;object-fit:cover;border-radius:8px">
+            <img src="${p.img || 'img/placeholder.jpg'}" alt="${p.title}" >
             <small style="color:var(--muted)">${p.cat}</small>
         </div>
           <div class="p-title">${p.title}</div>
@@ -503,12 +490,9 @@ window.removeItem = removeItem;
 
     // Filters & search
     document.querySelectorAll('.categories button').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const cat = btn.dataset.cat;
-        if(cat === 'all') renderProducts(products);
-        else renderProducts(products.filter(p=>p.cat === cat));
-      });
-    });
+  btn.addEventListener('click', ()=> renderProducts(products));
+});
+
 
     document.getElementById('search').addEventListener('input', e=>{
       const term = e.target.value.toLowerCase();
