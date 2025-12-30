@@ -1,0 +1,327 @@
+/* =========================
+   MOBILE — ATÉ 768px
+========================= */
+@media (max-width: 768px){
+
+/* NAVBAR */
+.navbar{
+  padding:10px 14px;
+}
+
+.logo{
+  font-size:1.15rem;
+}
+
+.logo img{
+  width:34px;
+}
+
+.search{
+  margin:0 8px;
+}
+
+.search input{
+  width:100%;
+  padding:10px 38px 10px 16px;
+  font-size:.85rem;
+}
+
+.cart-btn{
+  font-size:1.35rem;
+}
+
+/* CATEGORIAS */
+.categories{
+  padding:18px 14px;
+  gap:16px;
+}
+
+.category{
+  min-width:66px;
+}
+
+.category span{
+  font-size:.75rem;
+}
+
+/* WELCOME */
+.welcome_img{
+  padding:70px 14px;
+  background-attachment: scroll;
+}
+
+.welcome_img h2{
+  font-size:1.9rem;
+}
+
+.welcome_img p{
+  font-size:1.05rem;
+}
+
+/* PRODUTOS */
+.products{
+  padding:36px 14px;
+}
+
+.products-grid{
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.product-card{
+  width:100%;
+}
+
+.product-card img{
+  width:100%;
+}
+
+.product-info h3{
+  font-size:.9rem;
+}
+
+.product-info p{
+  font-size:.78rem;
+}
+
+.price{
+  font-size:1.05rem;
+}
+
+/* AÇÕES */
+.actions{
+  flex-direction:column;
+  gap:6px;
+}
+
+.actions button{
+  font-size:.8rem;
+  padding:9px;
+}
+
+/* MODAL */
+.modal-box{
+  width:94%;
+  padding:18px;
+  max-height:90vh;
+}
+
+.modal-top{
+  grid-template-columns:1fr;
+  gap:22px;
+}
+
+.gallery img{
+  max-height:240px;
+}
+
+.thumbs img{
+  width:56px;
+  height:56px;
+}
+
+/* TEXTO MODAL */
+.right-col h1{
+  font-size:1.25rem;
+}
+
+.new-price{
+  font-size:1.6rem;
+}
+
+.qty button{
+  width:28px;
+  height:28px;
+}
+
+.buy-actions{
+  grid-template-columns:1fr;
+  gap:10px;
+}
+
+.buy-actions button{
+  height:48px;
+  font-size:.9rem;
+}
+
+/* CARRINHO */
+.cart-modal{
+  padding:18px;
+}
+
+.cart-modal h3{
+  font-size:1.3rem;
+}
+
+.cart-modal .cart-item img{
+  width:50px;
+  height:50px;
+}
+
+/* WHATSAPP */
+.whatsapp-float{
+  width:48px;
+  height:48px;
+  font-size:1.6rem;
+  bottom:20px;
+  right:20px;
+}
+
+/* FOOTER */
+.footer-container{
+  grid-template-columns:1fr;
+  gap:26px;
+  text-align:center;
+}
+
+.footer-links{
+  gap:18px;
+  flex-wrap:wrap;
+}
+}
+
+
+/* =========================
+   CELULARES PEQUENOS — ATÉ 480px
+========================= */
+@media (max-width: 480px){
+
+/* NAVBAR */
+.navbar{
+  padding:8px 12px;
+}
+
+.logo{
+  font-size:1.05rem;
+}
+
+.logo img{
+  width:30px;
+}
+
+.search{
+  display:none;
+}
+
+.cart-btn{
+  font-size:1.35rem;
+}
+
+/* CATEGORIAS */
+.categories{
+  padding:14px 12px;
+  gap:12px;
+}
+
+.category{
+  min-width:60px;
+}
+
+.category span{
+  font-size:.68rem;
+}
+
+/* WELCOME */
+.welcome_img{
+  padding:56px 12px;
+}
+
+.welcome_img h2{
+  font-size:1.55rem;
+}
+
+.welcome_img p{
+  font-size:.95rem;
+}
+
+/* PRODUTOS */
+.products{
+  padding:30px 12px;
+}
+
+.products-grid{
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.product-info h3{
+  font-size:.82rem;
+  margin:10px 8px 4px;
+}
+
+.product-info p{
+  font-size:.7rem;
+}
+
+.price{
+  font-size:.95rem;
+}
+
+/* BOTÕES */
+.actions button{
+  font-size:.72rem;
+  padding:8px;
+}
+
+/* BADGES */
+.badge,
+.badge-featured{
+  font-size:.58rem;
+  padding:4px 7px;
+}
+
+/* MODAL */
+.modal-box{
+  padding:14px;
+}
+
+.gallery img{
+  max-height:210px;
+}
+
+.thumbs img{
+  width:52px;
+  height:52px;
+}
+
+/* TEXTO MODAL */
+.right-col h1{
+  font-size:1.15rem;
+}
+
+.new-price{
+  font-size:1.45rem;
+}
+
+.qty button{
+  width:26px;
+  height:26px;
+}
+
+/* CARRINHO */
+.cart-modal{
+  padding:14px;
+}
+
+.cart-modal h3{
+  font-size:1.15rem;
+}
+
+/* WHATSAPP */
+.whatsapp-float{
+  width:44px;
+  height:44px;
+  font-size:1.5rem;
+  bottom:16px;
+  right:16px;
+}
+
+/* FOOTER */
+.site-footer{
+  padding:36px 12px 28px;
+}
+
+.footer-bottom{
+  font-size:.68rem;
+}
+}
