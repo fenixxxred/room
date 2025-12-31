@@ -341,62 +341,70 @@ a{text-decoration:none;color:inherit}
 /* =========================
    PRODUTOS
 ========================= */
-.products{padding:60px 30px}
+.products{padding:60px}
 
 .products-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:30px
+  gap:20px;
+
+  /* auto-ajusta o número de colunas conforme o tamanho da tela */
+  grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
 }
 
 .product-card{
+  width: 100%;        /* largura total do grid cell */
   border-radius:var(--radius);
-  border: 1px solid #a7a7a7;
-  width: 250px;
+  border:1px solid #a7a7a7;
   background:#fff;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  padding:10px;
 }
 
 
 
 .product-card img{
-  width:90%;
-  border-radius: 14px 14px 0 0;
+  width:100%;       /* ocupa toda a largura do card */
+  height:140px;     /* altura fixa para manter proporção */
   object-fit:contain;
-  
+  border-radius:14px 14px 0 0;
 }
 
 .product-info{margin-top:12px}
 
 .product-info h3{
-  font-size:1rem;
+  font-size:0.9rem;
   margin-bottom:6px;
   color: #0b0b0b;
-  margin: 16px 0 5px 16px;
+  margin:2px 0 4px 0;
 }
 
 .product-info p{
-  font-size:.85rem;
+  font-size:.65rem;
   color:var(--muted);
-  min-height:36px;
-  margin: 0 0 0 16px;
+  min-height:32px;
 }
 
 .price{
-  margin: 0 0 10px 16px;
-  font-size:1.2rem;
+  font-size:1rem;
+  font-weight:600;
   color:var(--accent);
-  font-weight:600
+  margin:6px 0;
 }
 
 .actions{
   display:flex;
-  gap:10px;
-  padding: 10px 16px;
+  gap:6px;
+  width: 100%;
 }
 
 .actions button{
   flex:1;
-  padding:10px;
+  padding:6px 0;
+  font-size:0.8rem;
   border:none;
   border-radius:10px;
   cursor:pointer;
@@ -728,10 +736,9 @@ a{text-decoration:none;color:inherit}
 
 .variants{
   margin-top:10px;
-
-  max-height: 250px;      /* altura visível */
+  max-height: 200px;      /* altura visível */
   overflow-y: auto;       /* rolagem vertical */
-  padding-right: 6px;     /* espaço p/ scroll invisível */
+  padding-right: 2px;     /* espaço p/ scroll invisível */
   
   scrollbar-width: none;       /* Firefox */
   -ms-overflow-style: none;    /* Edge antigo */
@@ -1021,7 +1028,7 @@ a{text-decoration:none;color:inherit}
 }
 
 .products-more{
-  padding:60px 30px 80px;
+  padding:60px;
 }
 
 .load-more{
@@ -1314,10 +1321,6 @@ a{text-decoration:none;color:inherit}
   font-size:.85rem;
   color:#9ca3af;
 }
-
-
-
-
 </style>
 
 </head>
@@ -1344,9 +1347,6 @@ a{text-decoration:none;color:inherit}
     </div>
   </div>
 </section>
-
-
-
 
 <section class="products" id="featured">
   <div class="products-grid" id="productsGrid"></div>
@@ -1433,16 +1433,11 @@ a{text-decoration:none;color:inherit}
 
 </div>
 
-
 <!-- MODAL CARRINHO -->
 <div class="modal" id="cartModal">
   <div class="modal-box cart-modal">
-
-
     <h3>Seu Carrinho</h3>
-
     <div id="cartItems"></div>
-
     <div class="cart-footer">
       <strong>Total: R$ <span id="cartTotal">0.00</span></strong>
       <button class="continue" onclick="closeCart()">Continuar pedindo</button>
@@ -1450,7 +1445,7 @@ a{text-decoration:none;color:inherit}
     </div>
   </div>
 </div>
-<!-- Carrossel -->
+
 <!-- Carrossel de Ícones -->
 <div class="carrossel">
   <div class="carrossel-container">
@@ -1473,8 +1468,6 @@ a{text-decoration:none;color:inherit}
     </div>
   </div>
 </div>
-
-
 
 <section class="products products-more" id="produtos">
   <h2 class="section-title">Mais Produtos</h2>
@@ -1518,10 +1511,7 @@ a{text-decoration:none;color:inherit}
     <!-- MARCA -->
     <div class="footer-col brand">
       <h2 class="logo">Red <span>Room</span></h2>
-      
     </div>
-
-
 
     <!-- ATENDIMENTO -->
     <div class="footer-col">
@@ -1534,7 +1524,6 @@ a{text-decoration:none;color:inherit}
       </ul>
     </div>
     
-
     <!-- REDES -->
     <div class="footer-col">
       <h4>Siga-nos</h4>
@@ -1562,12 +1551,9 @@ a{text-decoration:none;color:inherit}
 
 </footer>
 
-
 <script src="products.js"></script>
 <script src="store.js"></script>
 <script>
-
-
 /* ================================
    ESTADO GLOBAL
 ================================ */
@@ -1585,7 +1571,6 @@ function getBadgeHTML(p){
   return '';
 }
 
-
 const DISCOUNT_RULES = [
   {
     percent: 29,
@@ -1597,7 +1582,6 @@ const DISCOUNT_RULES = [
   }
   // você pode adicionar quantos grupos quiser
 ];
-
 
 function getFinalPrice(p){
   const rule = DISCOUNT_RULES.find(r => r.ids.includes(p.id));
@@ -1612,10 +1596,7 @@ function getDiscountPercent(p){
   return rule ? rule.percent : 0;
 }
 
-
-
 function productCardHTML(p) {
-
 
   return `
     <div class="product-card">
@@ -1641,14 +1622,10 @@ function productCardHTML(p) {
               </span><br>
             ` : ''}
 
-
             <span class="new-price">
               R$ ${getFinalPrice(p).toFixed(2)}
             </span>
           </div>
-
-
-
         <div class="actions">
           <button class="buy" onclick="addToCart(${p.id})">Comprar</button>
           <button class="view" onclick="openModal(${p.id})">Ver</button>
@@ -1657,8 +1634,6 @@ function productCardHTML(p) {
     </div>
   `;
 }
-
-
 
 /* ================================
    PRODUTOS EM DESTAQUE
@@ -1721,7 +1696,6 @@ function addToCart(id, qty = 1, variant = null){
   saveCart();
 }
 
-
 function saveCart() {
   localStorage.setItem('cart_redroom', JSON.stringify(cart));
   renderCart();
@@ -1731,7 +1705,6 @@ function removeItem(cartId){
   cart = cart.filter(item => item.cartId !== cartId);
   saveCart();
 }
-
 
 function renderCart() {
   const box = document.getElementById('cartItems');
@@ -1780,8 +1753,6 @@ function closeCart() {
   document.getElementById('cartModal').classList.remove('active');
 }
 
-
-
 /* ================================
    MODAL DE PRODUTO
 ================================ */
@@ -1813,8 +1784,6 @@ function selectVariant(name){
       currentProduct.variantImages[name][0];
   }
 }
-
-
 
 function openModal(id) {
   const p = products.find(x => x.id === id);
@@ -1851,9 +1820,6 @@ function openModal(id) {
   </div>
 </div>
 
-
-
-
       <div class="right-col">
         <h1>${p.title}</h1>
 
@@ -1871,7 +1837,13 @@ function openModal(id) {
             R$ ${getFinalPrice(p).toFixed(2)}
           </span>
         </div>
-
+        <div class="buy-actions">
+          <button class="buy" onclick="addFromModal()">Adicionar</button>
+          <button class="whats" onclick="whats()">
+            <i class='bx bxl-whatsapp'></i>
+            WhatsApp
+          </button>
+        </div>
         ${hasVariants ? `
           <h4>Escolha o sabor</h4>
           <div class="variants">
@@ -1886,6 +1858,7 @@ function openModal(id) {
               </div>
             `).join('')}
           </div>
+          
         ` : `
           <div class="qty">
             <button onclick="qtyChange(-1)">−</button>
@@ -1894,16 +1867,9 @@ function openModal(id) {
           </div>
         `}
 
-        <div class="buy-actions">
-          <button class="buy" onclick="addFromModal()">Adicionar</button>
-          <button class="whats" onclick="whats()">
-            <i class='bx bxl-whatsapp'></i>
-            WhatsApp
-          </button>
-        </div>
       </div>
     </div>
-
+    
     <div class="modal-bottom">
       <div class="modal-block">
         <h3>Descrição</h3>
@@ -1914,9 +1880,6 @@ function openModal(id) {
 
   document.getElementById('productModal').classList.add('active');
 }
-
-
-
 
 function closeModal() {
   document.getElementById('productModal').classList.remove('active');
@@ -1974,9 +1937,6 @@ function addFromModal(){
   saveCart();
   closeModal();
 }
-
-
-
 
 function scrollCats(dir){
   const el = document.getElementById('categories');
