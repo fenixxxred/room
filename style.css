@@ -114,31 +114,31 @@
 /* MODAL */
 .modal-box{
   width:94%;
-  padding:18px;
-  max-height:90vh;
+  padding:16px;
+  max-height:85vh;
 }
 
 .modal-top{
-  grid-template-columns:1fr;
-  gap:22px;
+    grid-template-columns: 1fr;
+    gap: 18px;
 }
 
 .gallery img{
-  max-height:240px;
+  max-height:220px;
 }
 
 .thumbs img{
-  width:56px;
-  height:56px;
+  width:50px;
+  height:50px;
 }
 
 /* TEXTO MODAL */
 .right-col h1{
-  font-size:1.25rem;
+  font-size:1.2rem;
 }
 
 .new-price{
-  font-size:1.6rem;
+  font-size:1.55rem;
 }
 
 .qty button{
@@ -148,12 +148,12 @@
 
 .buy-actions{
   grid-template-columns:1fr;
-  gap:10px;
+  gap:8px;
 }
 
 .buy-actions button{
-  height:48px;
-  font-size:.9rem;
+  height:44px;
+  font-size:.85rem;
 }
 
 /* CARRINHO */
@@ -207,12 +207,8 @@
   padding:8px 12px;
 }
 
-.logo{
-  font-size:1.05rem;
-}
-
 .logo img{
-  width:30px;
+  width:43px;
 }
 
 .search{
@@ -252,20 +248,38 @@
 
 /* PRODUTOS */
   .product-info{
-    padding:8px;
+    padding:18px;
+  }
+
+  .products-grid{
+    grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
+    gap:12px;
+  }
+
+  .product-card img{
+    height:160px;
   }
 
   .product-info h3{
-    font-size:.78rem;
+    margin: 0;
+    padding-top: 0;
+    font-size:0.8rem;
   }
 
-  .price{
-    font-size:.9rem;
-  }
+
+.price .old-price{
+  font-size: 0.7rem;
+}
+
+  .discount-tag{
+  font-size:7px;
+  padding:2px 4px;
+  border-radius: 3px;
+}
 
   .actions button{
-    padding:6px;
-    font-size:.7rem;
+    font-size:0.7rem;
+    padding:5px 0;
   }
 
 
@@ -276,38 +290,162 @@
   padding:4px 7px;
 }
 
-/* MODAL */
-.modal-box{
-  padding:14px;
+/* =========================
+   MODAL COMPACTO — MOBILE
+========================= */
+
+/* overlay */
+.modal{
+  align-items:flex-start;
+  padding:8px;
 }
 
+/* caixa */
+.modal-box{
+  width:100%;
+  max-height:100vh;
+  padding:8px;
+  border-radius:12px;
+}
+
+/* botão fechar */
+.modal-box .close{
+  top:6px;
+  right:8px;
+  font-size:1.3rem;
+}
+
+/* layout */
+.modal-top{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:6px;
+}
+
+/* imagens */
+.gallery{
+    width:190px;
+  height:190px;
+}
 .gallery img{
-  max-height:210px;
+  max-height:190px;
+  object-fit:contain;
+}
+
+.thumbs{
+  margin: 30px 0 0 15px;
+  gap:6px;
+  height: 200px;
 }
 
 .thumbs img{
-  width:52px;
-  height:52px;
+  width:44px;
+  height:44px;
 }
 
-/* TEXTO MODAL */
+/* texto */
+.right-col{
+  gap:6px;
+}
+
 .right-col h1{
-  font-size:1.15rem;
+  font-size:.9rem;
+  line-height:1.15;
 }
+
+/* preços */
+.prices{
+  margin:4px 0;
+}
+
 .new-price{
-  font-size:1.45rem;
+  font-size:1.1rem;
 }
+
+.old-price{
+  font-size:.7rem;
+}
+
+/* variantes */
+.variants{
+  gap:4px;
+  margin-bottom: 1px;
+}
+
+.variant-item{
+  padding:2px 4px;
+  font-size:.65rem;
+  margin: 0;
+}
+
+.variant-item .qty{
+  gap: 2px;
+}
+
+
+
 .qty button{
-  width:26px;
-  height:26px;
+  width:15px;
+  height:15px;
+  font-size:.7rem;
 }
+
+.qty span{
+  font-size:.65rem;
+}
+
+/* botões */
+.buy-actions{
+  gap:6px;
+  margin-top:6px;
+}
+
+.buy-actions button{
+  height:34px;
+  font-size:.72rem;
+  border-radius:10px;
+}
+
+/* descrição */
+.modal-bottom{
+  margin-top:4px;
+}
+
+.modal-block h3{
+  font-size:.8rem;
+  margin-bottom:2px;
+}
+
+.modal-block p{
+  font-size:.7rem;
+  line-height:1.15;
+  max-height:2.3em; /* 🔑 evita scroll */
+  overflow:hidden;
+}
+
+/* badges */
+.badge,
+.badge-featured{
+  font-size:.5rem;
+  padding:2px 5px;
+}
+
+  /* FECHAR */
+  .close{
+    font-size:1.4rem;
+    top:8px;
+    right:10px;
+  }
+
 /* CARRINHO */
 .cart-modal{
   padding:14px;
 }
+
 .cart-modal h3{
   font-size:1.15rem;
 }
+
 /* WHATSAPP */
 .whatsapp-float{
   width:44px;
@@ -316,10 +454,12 @@
   bottom:16px;
   right:16px;
 }
+
 /* FOOTER */
 .site-footer{
   padding:36px 12px 28px;
 }
+
 .footer-bottom{
   font-size:.68rem;
 }
