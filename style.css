@@ -2,7 +2,9 @@
    MOBILE — ATÉ 768px
 ========================= */
 @media (max-width: 768px){
-
+  body{
+    width: 100%;
+  }
 /* NAVBAR */
 .navbar{
   padding:10px 14px;
@@ -17,7 +19,7 @@
 }
 
 .search{
-  margin:0 8px;
+  margin: 0 8px;
 }
 
 .search input{
@@ -69,35 +71,45 @@
 }
 
 .product-card{
-  width:100%;
-}
+    padding:0;
+    border-radius:14px;
+    overflow:hidden;
+  }
 
-.product-card img{
-  width:100%;
-}
+  .product-card img{
+    aspect-ratio:1 / 1;
+    object-fit:cover;
+    height:auto;
+  }
 
-.product-info h3{
-  font-size:.9rem;
-}
+  .product-info{
+    padding:10px;
+  }
 
-.product-info p{
-  font-size:.78rem;
-}
+  .product-info h3{
+    font-size:.85rem;
+    margin:4px 0;
+    line-height:1.15;
+  }
 
-.price{
-  font-size:1.05rem;
-}
+  .product-info p{
+    display: none;
+  }
+
+  .price{
+    font-size:.95rem;
+  }
 
 /* AÇÕES */
-.actions{
-  flex-direction:column;
-  gap:6px;
-}
+  .actions{
+    gap:6px;
+  }
 
-.actions button{
-  font-size:.8rem;
-  padding:9px;
-}
+  .actions button{
+    padding:7px;
+    font-size:.75rem;
+    border-radius:8px;
+  }
 
 /* MODAL */
 .modal-box{
@@ -186,6 +198,10 @@
 ========================= */
 @media (max-width: 480px){
 
+  body{
+    width: 100%;
+  }
+
 /* NAVBAR */
 .navbar{
   padding:8px 12px;
@@ -235,33 +251,23 @@
 }
 
 /* PRODUTOS */
-.products{
-  padding:30px 12px;
-}
+  .product-info{
+    padding:8px;
+  }
 
-.products-grid{
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
+  .product-info h3{
+    font-size:.78rem;
+  }
 
-.product-info h3{
-  font-size:.82rem;
-  margin:10px 8px 4px;
-}
+  .price{
+    font-size:.9rem;
+  }
 
-.product-info p{
-  font-size:.7rem;
-}
+  .actions button{
+    padding:6px;
+    font-size:.7rem;
+  }
 
-.price{
-  font-size:.95rem;
-}
-
-/* BOTÕES */
-.actions button{
-  font-size:.72rem;
-  padding:8px;
-}
 
 /* BADGES */
 .badge,
@@ -288,25 +294,20 @@
 .right-col h1{
   font-size:1.15rem;
 }
-
 .new-price{
   font-size:1.45rem;
 }
-
 .qty button{
   width:26px;
   height:26px;
 }
-
 /* CARRINHO */
 .cart-modal{
   padding:14px;
 }
-
 .cart-modal h3{
   font-size:1.15rem;
 }
-
 /* WHATSAPP */
 .whatsapp-float{
   width:44px;
@@ -315,12 +316,10 @@
   bottom:16px;
   right:16px;
 }
-
 /* FOOTER */
 .site-footer{
   padding:36px 12px 28px;
 }
-
 .footer-bottom{
   font-size:.68rem;
 }
