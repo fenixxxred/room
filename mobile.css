@@ -1,0 +1,765 @@
+
+/* =========================
+   MOBILE — ATÉ 768px
+========================= */
+@media (max-width: 768px){
+  body{
+    width: 100%;
+  }
+/* NAVBAR */
+.navbar{
+  padding:10px 4px;
+}
+
+.logo{
+  font-size:1.15rem;
+}
+
+.logo img{
+  width:34px;
+}
+
+.search{
+  margin: 0 8px;
+}
+
+.search input{
+  width:100%;
+  padding:10px 38px 10px 16px;
+  font-size:.85rem;
+}
+
+.cart-btn{
+  font-size:1.35rem;
+}
+
+/* CATEGORIAS */
+  /* Wrapper */
+  .categories-wrapper{
+    padding:0 ;
+  }
+
+  /* Carrossel */
+  .categories{
+  width: 100%;
+  margin: 0;
+}
+  .categories{
+    gap:16px;
+    padding:18px 34px;
+  }
+
+  /* Categoria */
+  .category{
+    min-width:70px;
+    margin: 0 5px 0;
+    text-align: center;
+  }
+
+  .category img{
+    display: none;
+    width:38px;
+    height:38px;
+  }
+
+  .category span{
+    font-size: 11px;
+    margin-top:6px;
+  }
+
+  .category span::after{
+    bottom:-4px;
+  }
+
+  /* =========================
+     BOTÕES DE NAVEGAÇÃO
+  ========================= */
+  .cat-nav{
+    display: none;
+    width:20px;
+    height:20px;
+    font-size:1.4rem;
+    opacity:.85;
+  }
+
+  .cat-nav.left{ left:2px; }
+  .cat-nav.right{ right:2px; }
+
+  .cat-nav:hover{
+    transform:translateY(-50%) scale(1.15);
+    color:#f73f3f;
+  }
+
+
+/* WELCOME */
+.welcome_img{
+  padding:70px 14px;
+  background-attachment: scroll;
+}
+
+.welcome_img h2{
+  font-size:1.9rem;
+}
+
+.welcome_img p{
+  font-size:1.05rem;
+}
+
+.btn-primary{
+  background:#ffe0e9;
+  color: #000000;
+}
+
+.btn-secondary{
+  background: #ffe0e9;
+  border: none;
+  color: #000000;
+}
+
+.btn-primary:hover{display: none;}
+.btn-secondary:hover{display: none;}
+
+  .carrossel{
+    padding:6px 0;
+  }
+
+  .slides{
+    gap:22px;
+    animation-duration:14s; /* mais rápido */
+  }
+
+  .slide{
+    font-size:1.15rem;
+    letter-spacing:2px;
+    margin-left:80px;
+    opacity:.9;
+  }
+
+  .slide img{
+    width:22px;
+    transform:rotate(35deg);
+  }
+
+  .slide i{
+    font-size:1.2rem;
+  }
+
+  /* hover menos agressivo (mobile não tem hover real) */
+  .slide:hover{
+    transform:scale(1.15);
+    filter:none;
+  }
+
+/* PRODUTOS */
+  #featured{
+    padding:40px 0;
+    overflow:hidden;
+  }
+
+  #featured .products-grid{
+    display:flex;
+    grid-template-columns:unset; /* 🔑 remove o grid */
+    gap:16px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    padding:0 16px;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  #featured .products-grid::-webkit-scrollbar{
+    display:none;
+  }
+
+  #featured .product-card{
+    flex:0 0 50%;
+    scroll-snap-align:start;
+  }
+
+
+.products{
+  padding:36px 14px;
+}
+
+.products-grid{
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.product-card{
+    padding:0;
+    border-radius:14px;
+    overflow:hidden;
+  }
+
+  .product-card img{
+    aspect-ratio:1 / 1;
+    object-fit:cover;
+    height:auto;
+  }
+
+  .product-info{
+    padding:10px;
+  }
+
+  .product-info h3{
+    font-size:.85rem;
+    margin:4px 0;
+    line-height:1.15;
+  }
+
+  .product-info p{
+    display: none;
+  }
+
+  .price{
+    font-size:.95rem;
+  }
+
+/* AÇÕES */
+  .actions{
+    gap:6px;
+  }
+
+  .actions button{
+    padding:7px;
+    font-size:.75rem;
+    border-radius:8px;
+  }
+
+/* ===== MODAL BASE ===== */
+.modal-box{
+  width: 96%;
+  max-height: 94vh;
+  padding: 14px;
+  border-radius: 18px;
+}
+
+/* estrutura geral */
+#modalProduct{
+  gap: 14px;
+}
+
+/* ===== TOPO (vira coluna) ===== */
+.modal-top{
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+
+/* esconde galeria desktop */
+.desktop-only{
+  display:none !important;
+}
+
+/* mostra carrossel */
+.mobile-only{
+  display:flex;
+}
+
+/* ===== CARROSSEL ===== */
+.mobile-carousel{
+  position:relative;
+  width:100%;
+  height:220px;
+  background:#fff;
+  border-radius:14px;
+  
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.mobile-carousel img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+}
+
+/* botões */
+.carousel-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  border:none;
+
+  color:#ff8686;
+  background: none;
+  font-size:3rem;
+  cursor:pointer;
+  z-index:5;
+}
+
+.carousel-btn.prev{ left:8px; }
+.carousel-btn.next{ right:8px; }
+
+.carousel-btn:active{
+  transform:translateY(-50%) scale(.92);
+}
+
+/* ===== GALERIA ===== */
+.left-col{
+  flex-direction: column;
+  max-height: unset;
+  gap: 6px;
+}
+
+.gallery{
+  width: 100%;
+  height: 200px;
+  padding: 4px;
+}
+
+.gallery img{
+  max-height: 180px;
+}
+
+/* miniaturas */
+.thumbs{
+  flex-direction: row;
+  max-height: unset;
+  gap: 4px;
+}
+
+.thumbs img{
+  width: 52px;
+  height: 52px;
+}
+
+/* ===== COLUNA DIREITA ===== */
+.right-col h1{
+  font-size: .95rem;
+  margin-bottom: 8px;
+}
+
+/* preços */
+.new-price{
+  font-size: 1.1rem;
+}
+
+.old-price{
+  font-size: .75rem;
+}
+
+/* ===== QUANTIDADE ===== */
+.qty{
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.qty button{
+  width: 28px;
+  height: 28px;
+  font-size: .9rem;
+}
+
+.qty span{
+  min-width: 22px;
+  font-size: .95rem;
+}
+
+/* ===== VARIAÇÕES ===== */
+.variants{
+  max-height: 160px;
+}
+
+/* ITEM DE VARIAÇÃO */
+.variant-item{
+  margin-bottom: 4px;
+}
+
+/* 🔑 espaço menor entre qty e span */
+.variant-item .qty{
+  gap: 4px;
+}
+
+.variant-item .qty span{
+  min-width: 18px;
+  font-size: .85rem;
+}
+
+.variant-item .qty button{
+  width: 22px;
+  height: 22px;
+  font-size: .75rem;
+}
+
+/* ===== BOTÕES FIXOS ===== */
+.buy-actions{
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 10px 0 0;
+}
+
+.buy-actions button{
+  height: 44px;
+  font-size: .85rem;
+}
+
+/* ===== CONTEÚDO ABAIXO ===== */
+.modal-block{
+  padding: 14px;
+}
+
+.modal-block h3{
+  font-size: .95rem;
+}
+
+.modal-block p,
+.modal-block li{
+  font-size: .8rem;
+  line-height: 1.5;
+}
+
+/* botão fechar */
+.modal-box .close{
+  top: 10px;
+  right: 14px;
+  font-size: 1.8rem;
+}
+
+.buy-actions .whats{
+  background:  linear-gradient(135deg,#25d366,#1fb856);
+  color: #000000;
+}
+
+.buy-actions .whats:hover{
+  display: none;
+}
+
+
+/* CARRINHO */
+.cart-modal{
+  padding:18px;
+}
+
+.cart-modal h3{
+  font-size:1.3rem;
+}
+
+.cart-modal .cart-item img{
+  width:50px;
+  height:50px;
+}
+
+
+
+/* WHATSAPP */
+.whatsapp-float{
+  width:48px;
+  height:48px;
+  font-size:1.6rem;
+  bottom:20px;
+  right:20px;
+}
+
+/* FOOTER */
+.footer-container{
+  grid-template-columns:1fr;
+  gap:26px;
+  text-align:center;
+}
+
+.footer-links{
+  gap:18px;
+  flex-wrap:wrap;
+}
+}
+
+
+/* =========================
+   CELULARES PEQUENOS — ATÉ 480px
+========================= */
+@media (max-width: 480px){
+
+  body{
+    width: 100%;
+  }
+
+/* NAVBAR */
+.navbar{
+  padding:8px 18px 1px 14px;
+}
+
+.logo img{
+  width:34px;
+}
+
+.search{
+  display:none;
+}
+
+.cart-btn{
+  font-size:1.35rem;
+}
+
+/* CATEGORIAS */
+.categories{
+  padding:14px 12px;
+  gap:12px;
+}
+
+.category{
+  min-width:60px;
+}
+
+.category span{
+  font-size:.68rem;
+}
+
+/* WELCOME */
+.welcome_img{
+  padding:56px 12px;
+}
+
+.welcome_img h2{
+  font-size:1.55rem;
+}
+
+.welcome_img p{
+  font-size:.95rem;
+}
+
+  .carrossel{
+    padding:4px 0;
+  }
+
+  .slides{
+    gap:16px;
+    animation-duration:12s;
+  }
+
+  .slide{
+    font-size:1rem;
+    letter-spacing:1px;
+    margin-left:60px;
+  }
+
+  .slide img{
+    width:18px;
+  }
+
+  .slide i{
+    font-size:1.05rem;
+  }
+
+/* PRODUTOS */
+  .product-info{
+    padding:18px;
+  }
+
+  .products-grid{
+    grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
+    gap:12px;
+  }
+
+  .product-card img{
+    height:160px;
+  }
+
+  .product-info h3{
+    margin: 0;
+    padding-top: 0;
+    font-size:0.8rem;
+  }
+
+
+.price .old-price{
+  font-size: 0.7rem;
+}
+
+  .discount-tag{
+  font-size:7px;
+  padding:2px 4px;
+  border-radius: 3px;
+}
+
+  .actions button{
+    font-size:0.7rem;
+    padding:5px 0;
+  }
+
+
+/* BADGES */
+.badge,
+.badge-featured{
+  font-size:.58rem;
+  padding:4px 7px;
+}
+
+/* =========================
+   MODAL COMPACTO — MOBILE
+========================= */
+
+/* overlay */
+.modal{
+  align-items:flex-start;
+  padding:14px;
+}
+
+/* caixa */
+.modal-box{
+  width:100%;
+  max-height:100vh;
+  padding:18px;
+  margin-top: 10px;
+  border-radius:12px;
+}
+
+/* botão fechar */
+.modal-box .close{
+  top:10px;
+  right:8px;
+  font-size:1.5rem;
+}
+
+/* layout */
+.modal-top{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:26px;
+}
+
+/* imagens */
+.gallery{
+    width:190px;
+  height:190px;
+}
+.gallery img{
+  max-height:190px;
+  object-fit:contain;
+}
+
+.thumbs{
+  margin: 30px 0 0 15px;
+  gap:6px;
+  height: 200px;
+}
+
+.thumbs img{
+  width:44px;
+  height:44px;
+}
+
+/* texto */
+.right-col{
+  gap:6px;
+}
+
+.right-col h1{
+  font-size:.9rem;
+  line-height:1.15;
+}
+
+/* preços */
+.prices{
+  margin:4px 0;
+}
+
+.new-price{
+  font-size:1.1rem;
+}
+
+.old-price{
+  font-size:.7rem;
+}
+
+/* variantes */
+.variants{
+  gap:4px;
+  margin-bottom: 1px;
+}
+
+.variant-item{
+  padding:2px 4px;
+  font-size:.65rem;
+  margin: 0;
+}
+
+.variant-item .qty{
+  gap: 4px;
+}
+
+
+
+.qty button{
+  width:10px;
+  height:10px;
+  font-size:.4rem;
+}
+
+.qty span{
+  font-size:.75rem;
+}
+
+/* botões */
+.buy-actions{
+  gap:6px;
+  margin-top:6px;
+}
+
+.buy-actions button{
+  height:34px;
+  font-size:.72rem;
+  border-radius:10px;
+}
+
+/* descrição */
+.modal-bottom{
+  margin-top:4px;
+}
+
+.modal-block h3{
+  font-size:.8rem;
+  margin-bottom:2px;
+}
+
+.modal-block p{
+  font-size:.7rem;
+  line-height:1.15;
+  max-height:2.3em; /* 🔑 evita scroll */
+  overflow:hidden;
+}
+
+/* badges */
+.badge,
+.badge-featured{
+  font-size:.5rem;
+  padding:2px 5px;
+}
+
+  /* FECHAR */
+  .close{
+    font-size:1.4rem;
+    top:8px;
+    right:10px;
+  }
+
+/* CARRINHO */
+.cart-modal{
+  padding:14px;
+}
+
+.cart-modal h3{
+  font-size:1.15rem;
+}
+
+/* WHATSAPP */
+.whatsapp-float{
+  width:44px;
+  height:44px;
+  font-size:1.5rem;
+  bottom:16px;
+  right:16px;
+}
+
+/* FOOTER */
+.site-footer{
+  padding:36px 12px 28px;
+}
+
+.footer-bottom{
+  font-size:.68rem;
+}
+}
+
+
