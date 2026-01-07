@@ -183,6 +183,7 @@
 .products-grid{
   grid-template-columns:repeat(2,1fr);
   gap:14px;
+   margin: 30px 5px 20px 8px;
 }
 
 .product-card{
@@ -193,7 +194,6 @@
 
   .product-card img{
     aspect-ratio:1 / 1;
-    object-fit:cover;
     height:auto;
   }
 
@@ -761,5 +761,6 @@
   font-size:.68rem;
 }
 }
+
 
 
