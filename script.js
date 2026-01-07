@@ -92,6 +92,27 @@ function renderFeaturedProducts() {
     .forEach(p => grid.innerHTML += productCardHTML(p));
 }
 
+function renderFeaturedSplit(){
+  const gridTop = document.getElementById('productsGridTop');
+  const gridBottom = document.getElementById('productsGridBottom');
+
+  if(!gridTop || !gridBottom) return;
+
+  const destaque = products.filter(p => p.featured);
+
+  // primeira linha (ex: 4 primeiros)
+  const firstRow = destaque.slice(0, 4);
+
+  // segunda linha (restante dos destaques)
+  const secondRow = destaque.slice(4);
+
+  gridTop.innerHTML = '';
+  gridBottom.innerHTML = '';
+
+  firstRow.forEach(p => gridTop.innerHTML += productCardHTML(p));
+  secondRow.forEach(p => gridBottom.innerHTML += productCardHTML(p));
+}
+
 /* ================================
    MAIS PRODUTOS (VER MAIS)
 ================================ */
@@ -503,6 +524,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 /* ================================
    INIT
 ================================ */
-renderFeaturedProducts();
+
+renderFeaturedSplit();
 renderMoreProducts();
 renderCart();
