@@ -183,7 +183,7 @@
 .products-grid{
   grid-template-columns:repeat(2,1fr);
   gap:14px;
-   margin: 30px 5px 20px 8px;
+  margin: 30px 5px 20px 8px;
 }
 
 .product-card{
@@ -214,6 +214,7 @@
   .price{
     font-size:.95rem;
   }
+  
 
 /* AÇÕES */
   .actions{
@@ -494,8 +495,8 @@
 
 /* CATEGORIAS */
 .categories{
-  padding:14px 12px;
-  gap:12px;
+  padding:14px 6px;
+  gap:14px;
 }
 
 .category{
@@ -503,7 +504,7 @@
 }
 
 .category span{
-  font-size:.68rem;
+  font-size:.65rem;
 }
 
 /* WELCOME */
@@ -679,7 +680,9 @@
   gap: 4px;
 }
 
-
+.load-more button:hover{
+  display: none;
+}
 
 .qty button{
   width:10px;
@@ -761,6 +764,3 @@
   font-size:.68rem;
 }
 }
-
-
-
