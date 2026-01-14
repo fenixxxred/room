@@ -1,9 +1,9 @@
 const products = [
 
 /* ===================== LUBRIFICANTES ===================== */
-{ id: 1, title: "Gel Excitante Unissex Dragão 15ml", price: 41.99, desc: "Proporciona aquecimento e formigamento intenso, aumentando o prazer de ambos os parceiros.", img: "img/Gel_Excitante_Unissex_Dragao_C_965.webp", cat: "lubrificantes", badge: "novo" , featured: true},
+{ id: 1, title: "Gel Excitante Unissex Dragão 15ml", price: 41.99, desc: "Proporciona aquecimento e formigamento intenso, aumentando o prazer de ambos os parceiros.", img: "img/Gel_Excitante_Unissex_Dragao_C_965.webp", cat: "lubrificantes" , featured: true},
 { id: 2, title: "Gel Excitante Pinta Clima 15ml", price: 41.99, desc: "Ideal para criar clima e deixar a relação ainda mais envolvente com sensações de excitação imediata.", img: "img/Gel_Excitante_Pinta_Clima_15g__75.webp", cat: "lubrificantes" , featured: true},
-{ id: 3, title: "Gel Anestésico Tesão na Raba 15ml", price: 41.99, desc: "Desenvolvido para reduzir a sensibilidade e proporcionar conforto em momentos intensos.", img: "img/Gel_Anestesico_Tesao_Na_Raba_1_877.png", cat: "lubrificantes", badge: "novo" , featured: false},
+{ id: 3, title: "Gel Anestésico Tesão na Raba 15ml", price: 41.99, desc: "Desenvolvido para reduzir a sensibilidade e proporcionar conforto em momentos intensos.", img: "img/Gel_Anestesico_Tesao_Na_Raba_1_877.png", cat: "lubrificantes" , featured: false},
 { id: 4, title: "Gel Retardante Pika Turbo 15ml", price: 41.99, desc: "Ajuda a prolongar o desempenho, retardando a ejaculação sem perder a sensibilidade.", img: "img/Gel_Retardante_Pika_Turbo_15g__146.png", cat: "lubrificantes" , featured: false},
 { id: 5, title: "Vibrador Líquido Power Shock 15ml", price: 41.99, desc: "Fórmula eletrizante que provoca ondas de vibração na região aplicada.", img: "img/Vibrador_Liquido_Power_Shock_2_32.png", cat: "lubrificantes" , featured: false},
 { id: 6, title: "Gel Anestésico InDolor 15ml", price: 41.99, desc: "Perfeito para quem busca mais conforto em penetrações.", img: "img/Gel_Anestesico_InDolor_15g_Sex_506.png", cat: "lubrificantes" , featured: false},
@@ -14,9 +14,9 @@ const products = [
 { id: 105, title:"Hot Ice E Vibra Xana Loka 15g Hot Flowers", price: 44.99, desc:"Combinação de calor e frescor com vibração que surpreende.", img:"img/Gel_Funcional_Hot_Ice_E_Vibra__594.jpg", cat:"lubrificantes", featured: true},
 
 /* ===================== AFRODISÍACOS / BEBIDAS ===================== */
-{ id: 11, title: "Tesão de Égua", price: 15.99, desc: "Estimulante afrodisíaco que intensifica o desejo.", img: "img/Energetico_Afrodisaco_Feminino_641.webp", cat: "afrodisiacos", badge: "novo" , featured: false},
-{ id: 12, title: "Energético Afrodisíaco Masculino", price: 15.99, desc: "Aumenta energia e disposição sexual.", img: "img/Energetico_Afrodisaco_Masculin_567.webp", cat: "bebidas", badge: "novo" , featured: false},
-{ id: 13, title: "Energético Afrodisíaco Feminino", price: 15.99, desc: "Estimula a libido feminina.", img: "img/Energetico_Afrodisaco_Feminino_651.webp", cat: "bebidas", badge: "novo" , featured: false},
+{ id: 11, title: "Tesão de Égua", price: 15.99, desc: "Estimulante afrodisíaco que intensifica o desejo.", img: "img/Energetico_Afrodisaco_Feminino_641.webp", cat: "afrodisiacos" , featured: false},
+{ id: 12, title: "Energético Afrodisíaco Masculino", price: 15.99, desc: "Aumenta energia e disposição sexual.", img: "img/Energetico_Afrodisaco_Masculin_567.webp", cat: "bebidas" , featured: false},
+{ id: 13, title: "Energético Afrodisíaco Feminino", price: 15.99, desc: "Estimula a libido feminina.", img: "img/Energetico_Afrodisaco_Feminino_651.webp", cat: "bebidas" , featured: false},
 
 
 /* ===================== ACESSÓRIOS ===================== */
@@ -64,7 +64,7 @@ const products = [
 
 
 /* ===================== VIBRADORES ===================== */
-{ id: 17, title: "Bullet", price: 43.99, desc: "Mini vibrador discreto, silencioso e potente.", img: "img/Vibrador_Bullet_Ovo_Vibratorio_630.jpg", cat: "vibradores", badge: "novo" , featured: false},
+{ id: 17, title: "Bullet", price: 43.99, desc: "Mini vibrador discreto, silencioso e potente.", img: "img/Vibrador_Bullet_Ovo_Vibratorio_630.jpg", cat: "vibradores" , featured: false},
 { id: 18, title: "Prótese Ejaculatória sem Vibro", price: 114.99, desc: "Prótese Ejaculatória Kong Com Escroto 19,5x5,5cm Adão E Eva.", img: "img/ProteseEjaculatoriaKong.webp", cat: "vibradores" , featured: false},
 { id: 19, title: "Vibrador Ponto G Premium", price: 43.99, desc: "Design anatômico para estimulação do ponto G.", img: "img/Vibrador_Ponto_G_Golfinho_Liso_516.webp", cat: "vibradores" , featured: false},
 { id: 20, title: "Estimulador Rosa de Ponto G", price: 225.99, desc: "Estimula ponto G e clitóris com design sofisticado.", img: "img/Estimulador_Rosa_De_Ponto_G_E__508.webp", cat: "vibradores", badge: "destaque" , featured: false},
@@ -186,10 +186,10 @@ const products = [
 { id: 97, title: "Lubrificante Íntimo D4 Sachê 5g", price: 5.99, desc: "Lubrificante prático em sachê.", img: "img/Lubrificante_ntimo_D4_Sach_5g__257.webp", cat: "lubrificantes" , featured: false},
 { id: 98, title: "Lubrificante Íntimo K-Med 2 em 1 50g", price: 25.99, desc: "Lubrificante hidratante e funcional.", img: "img/Lubrificante_ntimo_Kmed_2_Em_1_429.webp", cat: "lubrificantes" , featured: false},
 { id: 99, title: "Lubrificante Sedenta por Conforto 50g", price: 35.99, desc: "Lubrificante premium de conforto.", img: "img/Lubrificante_Sedenta_Por_Confo_612.webp", cat: "lubrificantes" , featured: false},
-{ id: 100, title: "Gel Anestésico Garganta Profunda 15ml", price: 45.99, desc: "Conforto para sexo oral.", img: "img/Gel_Anestesico_Garganta_Profun.webp", cat: "lubrificantes" , featured: false},
+{ id: 100, title: "Garganta Profunda 15ml", price: 58.99, desc: "Conforto para sexo oral.", img: "img/Gel_Anestesico_Garganta_Profun.webp", cat: "lubrificantes" , featured: false},
 { id: 101, title: "Ducha Higiênica Unissex 89ml", price: 25.99, desc: "Ducha prática e discreta.", img: "img/Ducha_Higinica_Unissex.png", cat: "higiene" , featured: false},
 { id: 102, title: "Ducha Higiênica 230ml", price: 38.99, desc: "Limpeza íntima completa.", img: "img/Ducha_Higinica_230ml.webp", cat: "higiene" , featured: false},
 { id: 103, title: "Lubrificante Íntimo K-Med Ice 50g", price: 36.99, desc: "Efeito refrescante intenso.", img: "img/Lubrificante_ntimo_Kmed_Ice.webp", cat: "lubrificantes" , featured: false},
-{ id: 104, title: "Lubrificante Íntimo K-Med Hot 200g", price: 65.99, desc: "Efeito quente para mais prazer.", img: "img/Lubrificante_ntimo_Kmed_Hot_20_600.webp", cat: "lubrificantes", badge: "Novo" , featured: false},
+{ id: 104, title: "Lubrificante Íntimo K-Med Hot 200g", price: 65.99, desc: "Efeito quente para mais prazer.", img: "img/Lubrificante_ntimo_Kmed_Hot_20_600.webp", cat: "lubrificantes" , featured: false},
 
 ];
