@@ -14,12 +14,33 @@
 
 </head>
 <body>
-
 <header class="navbar">
   <div class="logo"><img src="imagens/logo.png"></div>
   <div class="search"><input type="text" id="searchInput" placeholder="Buscar produtos..."><i class="fa fa-search"></i></div>
   <div class="cart-btn" onclick="openCart()"><i class="fa fa-shopping-cart"></i><span class="cart-count" id="cartCount">0</span></div>
 </header>
+
+<!--  CATEGORIAS  -->
+<div class="categories-wrapper">
+
+  <section class="categories" id="categories">
+
+  <div class="category" onclick="location.href='categoria.html?cat=massagem'">
+
+    <span>Massagem</span>
+  </div>
+  <div class="category" onclick="location.href='categoria.html?cat=cosmeticos'">
+
+    <span>Cosméticos</span>
+  </div>
+  <div class="category" onclick="location.href='categoria.html?cat=fantasias'">
+
+    <span>Fantasias</span>
+  </div>
+  </section>
+
+</div>
+
 
 <section class="welcome">
   <div class="welcome-content">
@@ -37,6 +58,8 @@
   </div>
 </section>
 
+
+
 <section class="products" id="featured">
   <h2 class="section-title">Produtos Destaque</h2>
 
@@ -47,88 +70,11 @@
   <div class="products-grid" id="productsGridBottom"></div>
 </section>
 
+
 <!--  IMAGEM DE FUNDO  -->
 <section class="welcome_img"></section>
 
-<!--  CATEGORIAS  -->
-<div class="categories-wrapper">
 
-  <button class="cat-nav left" onclick="scrollCats(-1)">❮</button>
-
-  <section class="categories" id="categories">
-
-  <div class="category all" onclick="filterCat('all')">
-    <img src="img/cat-todos.jpg">
-    <span>Todos</span>
-  </div>
-  
-  <div class="category" onclick="filterCat('vibradores')">
-    <img src="imagens/icons8-vibrator-50.png">
-    <span>Vibradores</span>
-  </div>
-
-  <div class="category" onclick="filterCat('lubrificantes')">
-    <img src="img/cat-lubrificantes.jpg">
-    <span>Lubrificantes</span>
-  </div>
-
-  <div class="category" onclick="filterCat('acessorios')">
-    <img src="img/cat-acessorios.jpg">
-    <span>Acessórios</span>
-  </div>
-
-  <div class="category" onclick="filterCat('plugs')">
-    <img src="img/egg.png">
-    <span>Plugs</span>
-  </div>
-
-  <div class="category" onclick="filterCat('masturbadores')">
-    <img src="img/cat-masturbadores.jpg">
-    <span>Masturbadores</span>
-  </div>
-
-  <div class="category" onclick="filterCat('proteses')">
-    <img src="img/cat-proteses.jpg">
-    <span>Próteses</span>
-  </div>
-
-  <div class="category" onclick="filterCat('jogos')">
-    <img src="img/cat-jogos.jpg">
-    <span>Jogos Eróticos</span>
-  </div>
-
-  <div class="category" onclick="filterCat('preservativos')">
-    <img src="img/cat-preservativos.jpg">
-    <span>Preservativos</span>
-  </div>
-
-  <div class="category" onclick="filterCat('higiene')">
-    <img src="img/cat-higiene.jpg">
-    <span>Cuidados & Higiene</span>
-  </div>
-
-  <div class="category" onclick="filterCat('massagem')">
-    <img src="img/cat-massagem.jpg">
-    <span>Massagem</span>
-  </div>
-
-  <div class="category" onclick="filterCat('ligeries')">
-    <img src="img/cat-massagem.jpg">
-    <span>Ligeries</span>
-  </div>
-
-  <div class="category" onclick="filterCat('cosmeticos')">
-    <img src="img/cat-cosmeticos.jpg">
-    <span>Cosméticos</span>
-  </div>
-
-
-
- </section>
-
-  <button class="cat-nav right" onclick="scrollCats(1)">❯</button>
-
-</div>
 
 
 
@@ -153,6 +99,82 @@
 
     </div>
   </div>
+</div>
+
+<!--  CATEGORIAS  -->
+<div class="categories-wrapper">
+
+  <section class="categories" id="categories">
+
+  <div class="category all" onclick="filterCat('all')">
+    
+    <span>Todos</span>
+  </div>
+  
+  <div class="category" onclick="filterCat('vibradores')">
+    
+    <span>Vibradores</span>
+  </div>
+
+  <div class="category" onclick="filterCat('lubrificantes')">
+    
+    <span>Lubrificantes</span>
+  </div>
+
+  <div class="category" onclick="filterCat('acessorios')">
+    
+    <span>Acessórios</span>
+  </div>
+
+  <div class="category" onclick="filterCat('plugs')">
+    
+    <span>Plugs</span>
+  </div>
+
+  <div class="category" onclick="filterCat('masturbadores')">
+   
+    <span>Masturbadores</span>
+  </div>
+
+  <div class="category" onclick="filterCat('proteses')">
+    
+    <span>Próteses</span>
+  </div>
+
+  <div class="category" onclick="filterCat('jogos')">
+    
+    <span>Jogos Eróticos</span>
+  </div>
+
+  <div class="category" onclick="filterCat('preservativos')">
+    
+    <span>Preservativos</span>
+  </div>
+
+  <div class="category" onclick="filterCat('higiene')">
+    
+    <span>Cuidados & Higiene</span>
+  </div>
+
+  <div class="category" onclick="filterCat('massagem')">
+
+    <span>Massagem</span>
+  </div>
+
+  <div class="category" onclick="filterCat('ligeries')">
+
+    <span>Ligeries</span>
+  </div>
+
+  <div class="category" onclick="filterCat('cosmeticos')">
+
+    <span>Cosméticos</span>
+  </div>
+
+
+
+ </section>
+
 </div>
 
 <section class="products products-more" id="produtos">
@@ -254,4 +276,5 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
