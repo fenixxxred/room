@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Categoria</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="mobile.css">
+
+  <style>
+    .page-header{
+      padding:25px;
+      background: #fff;
+    }
+
+    .home-btn i{
+  font-size: 1.6rem;
+  color: #000;
+  cursor: pointer;
+  transition: .25s;
+  margin: 10px;
+  padding: 10px;
+}
+
+.home-btn i:hover{
+  color: #fc0202;
+  transform: translateY(-2px);
+}
+
+
+@media (max-width: 768px){
+.search{
+  display:none;
+}
+}
+
+  </style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo"><a href="index.html"><img src="imagens/logo.png"></a></div>
+  <div class="search"><input type="text" id="searchInput" placeholder="Buscar produtos..."><i class="fa fa-search"></i></div>
+  
+  <div class="home-btn">
+    <a href="index.html" aria-label="Voltar para o início">
+      <i class="fa fa-home"></i>
+    </a>
+  </div>
+  <div class="cart-btn" onclick="openCart()"><i class="fa fa-shopping-cart"></i><span class="cart-count" id="cartCount">0</span></div>
+
+
+</header>
+
+
+<a href="https://wa.me/5564993286584"
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="Falar no WhatsApp">
+  <i class='bx bxl-whatsapp'></i>
+</a>
+
+
+<!--  CATEGORIAS  -->
+<div class="categories-wrapper">
+
+
+  <section class="categories" id="categories">
+
+  <div class="category" onclick="location.href='categoria.html?cat=massagem'">
+    <span>Massagem</span>
+  </div>
+  <div class="category" onclick="location.href='categoria.html?cat=cosmeticos'">
+    <span>Cosméticos</span>
+  </div>
+  <div class="category" onclick="location.href='categoria.html?cat=fantasias'">
+    <span>Fantasias</span>
+  </div>
+  </section>
+
+</div>
+
+<!-- título da categoria -->
+<div class="page-header">
+  <h1 id="catTitle">Categoria</h1>
+</div>
+
+<section class="products">
+  <div class="products-grid" id="catProducts"></div>
+</section>
+
+<!-- MODAL CARRINHO -->
+<div class="modal" id="cartModal">
+  <div class="modal-box cart-modal">
+    <h3>Seu Carrinho</h3>
+    <div id="cartItems"></div>
+    <div class="cart-footer">
+      <strong>Total: R$ <span id="cartTotal">0.00</span></strong>
+      <button class="continue" onclick="closeCart()">Continuar pedindo</button>
+      <button onclick="checkout()">Finalizar no WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+    <!-- LINKS -->
+  <div class="footer-links">
+    <a href="index.html">Início</a>
+    
+  </div>
+  <div class="footer-container">
+
+    <!-- MARCA -->
+    <div class="footer-col brand">
+      <h2 class="logo">Red <span>Room</span></h2>
+    </div>
+
+    <!-- ATENDIMENTO -->
+    <div class="footer-col">
+      <h4>Atendimento</h4>
+      <ul>
+        <li>📦 Envio discreto</li>
+        <li>🔒 Compra segura</li>
+        <li>🚚 Entrega rápida</li>
+        <li>💬 Suporte via WhatsApp</li>
+      </ul>
+    </div>
+    
+    <!-- REDES -->
+    <div class="footer-col">
+      <h4>Siga-nos</h4>
+      <div class="social">
+        <a href="https://www.instagram.com/redroom.sex/"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="https://wa.me/5564993286584"><i class='bx bxl-whatsapp'></i></a>
+      </div>
+    </div>
+
+    <div class="payment-seals">
+      <h3>Formas de pagamento</h3>
+
+      <div class="seals">
+        <img src="imagens/icons8-pix-50.png" alt="Pix">
+        <img src="imagens/icons8-magnetic-card-50.png" alt="Credito">
+        <img src="imagens/icons8-cash-50.png" alt="Dinheiro">
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © <span id="year"></span> Red Room. Todos os direitos reservados.
+  </div>
+
+</footer>
+
+<script src="products.js"></script>
+<script src="script.js"></script>
+
+<script>
+  function getParam(name){
+    const url = new URL(window.location.href);
+    return url.searchParams.get(name);
+  }
+
+  function renderCategory(){
+    const cat = getParam("cat");
+    const area = document.getElementById("catProducts");
+    const title = document.getElementById("catTitle");
+
+    if(!cat){
+      title.textContent = "Categoria não encontrada";
+      return;
+    }
+
+    // título
+    title.textContent =
+      cat === 'all'
+      ? 'Todos os produtos'
+      : cat.charAt(0).toUpperCase() + cat.slice(1);
+
+    // lista de produtos
+    const lista =
+      cat === 'all'
+      ? products
+      : products.filter(p => p.cat === cat);
+
+    area.innerHTML = "";
+
+    if(lista.length === 0){
+      area.innerHTML = "<p>Nenhum produto nesta categoria.</p>";
+      return;
+    }
+
+    lista.forEach(p => {
+      area.innerHTML += productCardHTML(p);
+    });
+  }
+
+  renderCategory();
+</script>
+
+</body>
+</html>
