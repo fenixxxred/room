@@ -819,6 +819,24 @@ a{text-decoration:none;color:inherit}
 
 
 /* BOTÃO REMOVER */
+.clear-cart{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border:none;
+  border-radius:8px;
+  background:#f1f1f1;
+  color:#333;
+  font-size:0.9rem;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.clear-cart:hover{
+  background:#ffdddd;
+  color:#c00;
+}
+
 .remove-item{
   margin-left:auto;
   background:none;
@@ -1278,4 +1296,5 @@ a{text-decoration:none;color:inherit}
   font-size:.85rem;
   color:#9ca3af;
 }
+
 
