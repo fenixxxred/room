@@ -223,6 +223,22 @@ function closeCart() {
   document.getElementById('cartModal').classList.remove('active');
 }
 
+function clearCart(){
+
+  // limpa array do carrinho
+  cart = [];
+
+  // limpa localStorage (atual e anteriores)
+  localStorage.removeItem("cart");
+  localStorage.removeItem("cartHistory");
+
+  // limpa interface
+  document.getElementById("cartItems").innerHTML = "";
+  document.getElementById("cartTotal").textContent = "0.00";
+  document.getElementById("cartCount").textContent = "0";
+
+}
+
 /* ================================
    MODAL DE PRODUTO
 ================================ */
@@ -528,3 +544,4 @@ document.getElementById('year').textContent = new Date().getFullYear();
 renderFeaturedSplit();
 renderMoreProducts();
 renderCart();
+
