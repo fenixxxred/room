@@ -189,6 +189,10 @@ a{text-decoration:none;color:inherit}
 /* =========================
    CARROSSEL DE CATEGORIAS
 ========================= */
+#categorias{
+  display: none;
+}
+
 .categories-wrapper{
   background: #fff;
   position:relative;
@@ -1274,3 +1278,4 @@ a{text-decoration:none;color:inherit}
   font-size:.85rem;
   color:#9ca3af;
 }
+
