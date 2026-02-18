@@ -1,3 +1,5 @@
+
+
 :root{
   --bg:#ffe0e9;
   --surface:#151515;
@@ -136,7 +138,7 @@ a{text-decoration:none;color:inherit}
 .welcome h1{
   font-size: clamp(2.4rem, 5vw, 3.6rem);
   font-weight: 800;
-  margin-bottom: 20px;
+  margin: 0 12px 20px 0;
 }
 
 .welcome p{
@@ -146,53 +148,10 @@ a{text-decoration:none;color:inherit}
   margin-bottom: 36px;
 }
 
-/* BOTÕES */
-.welcome-actions{
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-
-.btn-primary{
-  padding: 14px 32px;
-  border-radius: 999px;
-  background: linear-gradient(135deg,#ff004f,#ff4d7e);
-  color: #fff;
-  font-weight: 700;
-  text-decoration: none;
-  transition: .3s;
-}
-
-.btn-primary:hover{
-  transform: translateY(-2px);
-}
-
-.btn-secondary{
-  padding: 14px 32px;
-  border-radius: 999px;
-  border: 2px solid rgba(255,255,255,.3);
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
-  transition: .3s;
-}
-
-.btn-secondary:hover{
-  background: rgb(255, 163, 163);
-  color: #000;
-}
-
-
-
 
 /* =========================
    CARROSSEL DE CATEGORIAS
 ========================= */
-#categorias{
-  display: none;
-}
-
 .categories-wrapper{
   background: #fff;
   position:relative;
@@ -259,7 +218,9 @@ a{text-decoration:none;color:inherit}
   width:100%;
 }
 
-
+#categorias{
+  display: none;
+}
 
 /* =========================
    WELCOME
@@ -532,6 +493,7 @@ a{text-decoration:none;color:inherit}
   text-decoration: line-through;
   color:#999;
   font-size:14px;
+  margin-right: 7px;
 }
 
 .price .old-price{
@@ -817,8 +779,6 @@ a{text-decoration:none;color:inherit}
 
 /* ITEM DO CARRINHO */
 
-
-/* BOTÃO REMOVER */
 .clear-cart{
   width:100%;
   padding:10px;
@@ -837,6 +797,8 @@ a{text-decoration:none;color:inherit}
   color:#c00;
 }
 
+
+/* BOTÃO REMOVER */
 .remove-item{
   margin-left:auto;
   background:none;
@@ -1297,4 +1259,7 @@ a{text-decoration:none;color:inherit}
   color:#9ca3af;
 }
 
-
+.tag-animate{
+  display: flex;
+  justify-content: center;
+}
